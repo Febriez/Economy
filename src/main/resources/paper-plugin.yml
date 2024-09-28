@@ -1,0 +1,4 @@
+name: Economy
+version: '1.0-SNAPSHOT'
+main: com.coffeetory.economy.EconomyMain
+api-version: '1.21'
