@@ -13,7 +13,7 @@ import org.jetbrains.annotations.NotNull;
 
 public class MainCommand implements CommandExecutor {
 
-    private static final TextComponent PREFIX = Component.text("§f§l[ §a§l소지금 §f§l]§r ");
+    private static final TextComponent PREFIX = Component.text("§f§l[ §a§l소지금 §f§l] §r");
 
     @Override
     public boolean onCommand(@NotNull CommandSender sender, @NotNull Command cmd, @NotNull String l, @NotNull String[] args) {
