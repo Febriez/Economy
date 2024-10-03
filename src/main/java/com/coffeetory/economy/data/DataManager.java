@@ -10,32 +10,20 @@ import java.util.UUID;
 
 public class DataManager {
 
-    private static DataManager instance;
-
     private static final EconomyManager ecoManager = EconomyManager.getInstance();
+    private static final File dataFile = new File(EconomyMain.getInstance().getDataFolder() + "/data.yml");
 
-    private final File dataFile;
-
-    private DataManager() {
-        dataFile = new File(EconomyMain.getInstance().getDataFolder() + "/data.yml");
-    }
-
-    public void save() throws IOException {
+    public static void save() throws IOException {
         YamlConfiguration config = new YamlConfiguration();
         for (UUID key : ecoManager.getData().keySet())
             config.set(key.toString(), ecoManager.getData().get(key));
         config.save(dataFile);
     }
 
-    public void load() {
+    public static void load() {
         if (!dataFile.exists()) return;
         YamlConfiguration config = YamlConfiguration.loadConfiguration(dataFile);
         for (String key : config.getKeys(false))
             ecoManager.loadData(UUID.fromString(key), config.getLong(key));
-    }
-
-    public static DataManager getInstance() {
-        if (instance == null) instance = new DataManager();
-        return instance;
     }
 }

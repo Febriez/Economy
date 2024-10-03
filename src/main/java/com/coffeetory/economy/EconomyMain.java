@@ -17,13 +17,13 @@ public final class EconomyMain extends JavaPlugin {
     public void onEnable() {
         instance = this;
         registerCommands();
-        DataManager.getInstance().load();
+        DataManager.load();
     }
 
     @Override
     public void onDisable() {
         try {
-            DataManager.getInstance().save();
+            DataManager.save();
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
