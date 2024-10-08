@@ -1,7 +1,8 @@
 package com.coffeetory.economy;
 
-import com.coffeetory.economy.command.MainCommand;
+import com.coffeetory.economy.command.AdminCommand;
 import com.coffeetory.economy.data.DataManager;
+import com.coffeetory.lib.LibraryMain;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.PluginCommand;
 import org.bukkit.command.TabCompleter;
@@ -30,13 +31,7 @@ public final class EconomyMain extends JavaPlugin {
     }
 
     private void registerCommands() {
-        registerCommand(getCommand("돈"), new MainCommand());
-    }
-
-    private void registerCommand(PluginCommand cmd, Object clazz) {
-        if (cmd == null) return;
-        if (clazz instanceof CommandExecutor) cmd.setExecutor((CommandExecutor) clazz);
-        if (clazz instanceof TabCompleter) cmd.setTabCompleter((TabCompleter) clazz);
+        LibraryMain.registerCommand(getCommand("돈"), new AdminCommand());
     }
 
     public static EconomyMain getInstance() {
